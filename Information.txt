@@ -1,0 +1,109 @@
+/******************************************************************
+Copyright (c) Yash Prashant Kshatriya kshatriyayp16.it@coep.ac.in
+This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program. 
+*********************************************************************/
+
+
+Alpha-Beta Search
+	The Alpha-Beta algorithm (Alpha-Beta Pruning, Alpha-Beta Heuristic [1] ) is a significant enhancement to the minimax search algorithm that eliminates the need to search large portions of the game tree applying a branch-and-bound technique. Remarkably, it does this without any potential of overlooking a better move. If one already has found a quite good move and search for alternatives, one refutation is enough to avoid it. No need to look for even stronger refutations. The algorithm maintains two values, alpha and beta. They represent the minimum score that the maximizing player is assured of and the maximum score that the minimizing player is assured of respectively. Consider the following example...
+
+Pseudo Code
+
+int alphaBeta( int alpha, int beta, int depthleft ) {
+   int bestscore = -oo;
+   if( depthleft == 0 ) return quiesce( alpha, beta );
+   for ( all moves)  {
+      score = -alphaBeta( -beta, -alpha, depthleft - 1 );
+      if( score >= beta )
+         return score;  // fail-soft beta-cutoff
+      if( score > bestscore ) {
+         bestscore = score;
+         if( score > alpha )
+            alpha = score;
+      }
+   }
+   return bestscore;
+} 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Max versus Min
+	
+Pseudo Code
+
+int alphaBetaMax( int alpha, int beta, int depthleft ) {
+   if ( depthleft == 0 ) return evaluate();
+   for ( all moves) {
+      score = alphaBetaMin( alpha, beta, depthleft - 1 );
+      if( score >= beta )
+         return beta;   // fail hard beta-cutoff
+      if( score > alpha )
+         alpha = score; // alpha acts like max in MiniMax
+   }
+   return alpha;
+}
+ 
+int alphaBetaMin( int alpha, int beta, int depthleft ) {
+   if ( depthleft == 0 ) return -evaluate();
+   for ( all moves) {
+      score = alphaBetaMax( alpha, beta, depthleft - 1 );
+      if( score <= alpha )
+         return alpha; // fail hard alpha-cutoff
+      if( score < beta )
+         beta = score; // beta acts like min in MiniMax
+   }
+   return beta;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Nega-Max Framework
+	Inside a negamax framework the routine looks simpler, but is not necessarily simpler to understand. Despite negating the returned score of the direct recursion, alpha of the min-player becomes minus beta of the max-player and vice versa, and the term alpha-cutoff or alpha-pruning is somehow diminished.
+
+Pseudo Code
+	
+int alphaBeta( int alpha, int beta, int depthleft ) {
+   if( depthleft == 0 ) return quiesce( alpha, beta );
+   for ( all moves)  {
+      score = -alphaBeta( -beta, -alpha, depthleft - 1 );
+      if( score >= beta )
+         return beta;   //  fail hard beta-cutoff
+      if( score > alpha )
+         alpha = score; // alpha acts like max in MiniMax
+   }
+   return alpha;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+BitBoards
+	Bitboards,
+also called bitsets or bitmaps, are among other things used to represent the board inside a chess program in a piece centric manner. Bitboards, are in essence, finite sets of up to 64 elements - all the squares of a chessboard, one bit per square. Other board games with greater board sizes may be use set-wise representations as well [1], but classical chess has the advantage that one 64-bit word or register covers the whole board. Even more bitboard friendly is Checkers with 32-bit bitboards and less piece-types than chess [2] [3] .
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Heuristics
+	        proceeding to a solution by trial and error or by rules that are only loosely defined.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

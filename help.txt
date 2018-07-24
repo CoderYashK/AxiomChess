@@ -1,0 +1,2 @@
+/*Resources and websites*/
+RobertHyatt's chessProgramming.com, AlphaBeta search algorithm, NegaMax, MinMax Search Algorithm, Chessprogrammingwiki.com, HglMuller's website for programming, Wikipedia about bitboards, Adding polykeys code, that is the unique opening keys, Some functions standard function in the protocols like UCI and Xboard. 

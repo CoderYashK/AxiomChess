@@ -1,1 +1,4 @@
-It is a single player Chess engine written in C. I have implemented MIN-MAX search, Quiescence search, Alpha-Beta pruning  and my-search an algorithm to sharpen the search and increase the depth of the search to predict the total of at around 50 lakh moves in each turn.
+AxiomChess is basically a Chess game program written in C language.
+Which has the functionalities of single and player and multiplayer Chess game using on the terminal but can be also linked with the well-known available GUI's for Chess such as XBoard.
+
+

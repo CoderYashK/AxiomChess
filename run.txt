@@ -1,0 +1,3 @@
+gcc attack.c AxiomChess.c bitboards.c movegen.c board.c data.c
+evaluate.c hashkeys.c init.c io.c makemove.c misc.c movegen.c perft.c polybook.c
+polykeys.c pvtable.c search.c uci validate.c xboard.c
