@@ -1,1 +1,1 @@
-# dsaprojectchess
+It is a single player Chess engine written in C. I have implemented MIN-MAX search, Quiescence search, Alpha-Beta pruning  and my-search an algorithm to sharpen the search and increase the depth of the search to predict the total of a around 50 lakh moves in each turn.
